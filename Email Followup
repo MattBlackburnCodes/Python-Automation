@@ -1,0 +1,23 @@
+import win32com.client as win32
+
+outlookApp = win32.Dispatch('Outlook.Application')
+outlookNS = outlookApp.GetNameSpace('MAPI')
+
+mailItem = outlookApp.CreateItem(0)
+
+mailItem.Subject = "This is just a test"
+mailItem.BodyFormat = 1
+
+mailItem.Body = "Hello, I hope you are doing well today. Just want to follow up with you on your [variable issue]"
+mailItem.Sender = ""
+mailItem.To = ""
+
+mailItem.Display()
+mailItem.Save()
+
+#.Send is giving an error.
+#  Message=(-2147467260, 'Operation aborted', None, None)
+
+
+
+mailItem.Send()
